@@ -1,0 +1,10 @@
+.popup__card-container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    display: inline-grid;
+    grid-template-columns: minmax(min-content, max-content);
+    grid-template-rows: 1fr  12px;
+    gap: 10px;
+    position: relative;
+}

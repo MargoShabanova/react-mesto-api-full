@@ -1,0 +1,24 @@
+.element__button {
+    padding: 0;
+    /*margin: 5px 5px -1px;*/
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: none;
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 22px;
+    min-height: 19px;
+    border: none;
+    align-self: center;
+}
+
+.element__button:active {
+    background-image: url(../../../images/Union.png);
+}
+
+.element__button:hover {
+    opacity: 0.5;
+    transition: 0.4s;
+    cursor: pointer;
+}

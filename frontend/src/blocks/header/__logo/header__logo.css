@@ -1,0 +1,35 @@
+/* .header__logo {
+    margin: 0;
+    padding-bottom: 41px;
+}
+
+@media (max-width: 934px) {
+    .header__logo {
+        padding-left: 27px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__logo {
+    padding-bottom: 31.6px;
+    width: 103.74px;
+    height: 24.4px;
+    }
+} */
+
+.header__logo {
+    margin: 0;
+}
+
+@media (max-width: 934px) {
+    .header__logo {
+        padding-left: 27px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__logo {
+    width: 103.74px;
+    height: 24.4px;
+    }
+}

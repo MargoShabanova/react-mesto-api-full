@@ -1,0 +1,26 @@
+.profile__info {
+    display: grid;
+    grid-template-columns: minmax(min-content, 303px) minmax(min-content, 24px);
+    grid-template-rows: min-content min-content;
+    column-gap: 18px;
+    row-gap: 16px;
+    padding-left: 30px;
+    align-content: center;
+}
+
+@media (max-width: 700px) {
+    .profile__info {
+        padding-left: 42px;
+        padding-top: 26px;
+        padding-bottom: 36px;
+    }
+}
+
+@media (max-width: 425px) {
+    .profile__info {
+        grid-template-columns: minmax(min-content, 195px) minmax(min-content, 18px);
+        column-gap: 10px;
+        row-gap: 14px;
+        padding-left: 38px;
+    }
+}

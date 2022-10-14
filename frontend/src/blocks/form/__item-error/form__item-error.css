@@ -1,0 +1,18 @@
+.form__item-error {
+    display: block;
+    width: 358px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+}
+
+@media (max-width: 600px) {
+    .form__item-error {
+        width: 238px;
+        
+    }
+}
