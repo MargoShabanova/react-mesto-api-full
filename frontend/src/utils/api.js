@@ -107,7 +107,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://mesto-react.project.nomoredomains.icu/",
+  baseUrl: "https://api.mesto.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },

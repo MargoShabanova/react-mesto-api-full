@@ -17,7 +17,10 @@ class Auth {
       method: "POST",
       credentials: "include",
       headers: this._headers,
-      body: JSON.stringify({ password, email }),
+      body: JSON.stringify({ 
+        password: password,
+        email: email,
+       }),
     }).then(this._checkResponse);
   }
 
@@ -40,6 +43,7 @@ class Auth {
   getContent(token) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
+      credentials: "include",
       headers: {
         ...this._headers,
         "Authorization": `Bearer ${token}`,
@@ -49,7 +53,7 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: "https://mesto-react.project.nomoredomains.icu/",
+  baseUrl: "https://api.mesto.students.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },

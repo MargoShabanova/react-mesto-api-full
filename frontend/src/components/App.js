@@ -116,9 +116,6 @@ function App() {
 
   useEffect(() => {
     checkToken();
-  }, []);
-
-  useEffect(() => {
     if (loggedIn) {
       Promise.all([api.getProfile(), api.getInitialCards()])
         .then(([currentUser, initialCards]) => {
@@ -128,6 +125,17 @@ function App() {
         .catch((err) => console.log(err));
     }
   }, [loggedIn]);
+
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     Promise.all([api.getProfile(), api.getInitialCards()])
+  //       .then(([currentUser, initialCards]) => {
+  //         setCurrentUser(currentUser);
+  //         setCards(initialCards);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [loggedIn]);
 
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
