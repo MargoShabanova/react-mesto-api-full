@@ -26,6 +26,7 @@ const allowedCors = [
 
 const corsOptions = {
   origin: allowedCors,
+  optionsSuccessStatus: 200,
   credentials: true,
 };
 
