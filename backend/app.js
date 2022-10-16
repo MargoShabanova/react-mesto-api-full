@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
@@ -9,13 +10,26 @@ const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
-const cors = require('./middlewares/cors');
 const { pattern } = require('./utils/pattern');
 const NotFoundError = require('./errors/not-found-err');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+
+const allowedCors = [
+  'https://mesto-react.project.nomoredomains.icu',
+  'http://mesto-react.project.nomoredomains.icu',
+  'https://localhost:3000',
+  'http://localhost:3000',
+];
+
+const corsOptions = {
+  origin: allowedCors,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -28,8 +42,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.listen(PORT);
 
 app.use(requestLogger);
-
-app.use(cors);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
