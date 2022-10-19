@@ -79,7 +79,7 @@ const getCurrentUser = (req, res, next) => {
 
   User.findById(_id)
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch(next);
 };
@@ -87,7 +87,7 @@ const getCurrentUser = (req, res, next) => {
 const getUsers = (req, res, next) => {
   User.find({})
     .then((users) => {
-      res.send({ data: users });
+      res.send(users);
     })
     .catch(next);
 };
@@ -98,7 +98,7 @@ const getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError(MESSAGE_404);
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -118,7 +118,7 @@ const updateUser = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -146,7 +146,7 @@ const updateAvatar = (req, res, next) => {
         next(new NotFoundError(MESSAGE_404));
         return;
       }
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
