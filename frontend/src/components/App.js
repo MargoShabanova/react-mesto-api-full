@@ -177,7 +177,7 @@ function App() {
 
   const handleUpdateUser = (data) => {
     api
-      .editProfile(data)
+      .editProfile(data.name, data.about)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -187,7 +187,7 @@ function App() {
 
   const handleUpdateAvatar = (data) => {
     api
-      .editAvatar(data)
+      .editAvatar(data.avatar)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -219,7 +219,7 @@ function App() {
 
   const handleAddPlaceSubmit = (data) => {
     api
-      .addCard(data)
+      .addCard(data.name, data.link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
