@@ -24,17 +24,25 @@ const allowedCors = [
   'http://localhost:3000',
 ];
 
-const corsOptionsDelegate = (req, callback) => {
-  let corsOptions;
-  if (allowedCors.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true, credentials: true };
-  } else {
-    corsOptions = { origin: false, credentials: true };
-  }
-  callback(null, corsOptions);
+const corsOptions = {
+  origin: allowedCors,
+  optionsSuccessStatus: 200,
+  credentials: true,
 };
 
-app.use(cors(corsOptionsDelegate));
+app.use(cors(corsOptions));
+
+// const corsOptionsDelegate = (req, callback) => {
+//   let corsOptions;
+//   if (allowedCors.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions = { origin: true, credentials: true };
+//   } else {
+//     corsOptions = { origin: false, credentials: true };
+//   }
+//   callback(null, corsOptions);
+// };
+
+// app.use(cors(corsOptionsDelegate));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
