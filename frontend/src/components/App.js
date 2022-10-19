@@ -102,7 +102,7 @@ function App() {
           .then((res) => {
             if (res) {
               setUserData({
-                email: res.data.email,
+                email: res.email,
               });
               setLoggedIn(true);
               history.push("/main");
