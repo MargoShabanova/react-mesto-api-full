@@ -125,38 +125,6 @@ function App() {
     }
   },[loggedIn]);
 
-  // useEffect(() => {
-  //   const checkToken = () => {
-  //     const jwt = localStorage.getItem("jwt");
-  //     if (jwt) {
-  //       auth
-  //         .getContent(jwt)
-  //         .then((res) => {
-  //           if (res) {
-  //             setUserData({
-  //               email: res.email,
-  //             });
-  //             setLoggedIn(true);
-  //             history.push("/main");
-  //           } else {
-  //             localStorage.removeItem("jwt");
-  //             history.push("/sign-in");
-  //           }
-  //         })
-  //         .catch((err) => console.log(err));
-  //     }
-  //   };
-  //   checkToken();
-  //   if (loggedIn) {
-  //     Promise.all([api.getProfile(), api.getInitialCards()])
-  //       .then(([currentUser, initialCards]) => {
-  //         setCurrentUser(currentUser);
-  //         setCards(initialCards);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, [history, loggedIn]);
-
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setUserData({
@@ -209,7 +177,7 @@ function App() {
 
   const handleUpdateUser = (data) => {
     api
-      .editProfile(data.name, data.about)
+      .editProfile(data)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -219,7 +187,7 @@ function App() {
 
   const handleUpdateAvatar = (data) => {
     api
-      .editAvatar(data.avatar)
+      .editAvatar(data)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -251,7 +219,7 @@ function App() {
 
   const handleAddPlaceSubmit = (data) => {
     api
-      .addCard(data.name, data.link)
+      .addCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
