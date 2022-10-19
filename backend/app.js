@@ -24,14 +24,6 @@ const allowedCors = [
   'http://localhost:3000',
 ];
 
-// const corsOptions = {
-//   origin: allowedCors,
-//   optionsSuccessStatus: 200,
-//   credentials: true,
-// };
-
-// app.use(cors(corsOptions));
-
 const corsOptionsDelegate = (req, callback) => {
   let corsOptions;
   if (allowedCors.indexOf(req.header('Origin')) !== -1) {
@@ -55,6 +47,12 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.listen(PORT);
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
