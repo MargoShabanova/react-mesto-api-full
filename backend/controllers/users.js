@@ -68,8 +68,7 @@ const login = (req, res, next) => {
           avatar: user.avatar,
           email: user.email,
           token,
-        })
-        .end();
+        });
     })
     .catch(next);
 };
@@ -118,15 +117,15 @@ const updateUser = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .then((user) => {
+      if (!user) {
+        next(new NotFoundError(MESSAGE_404));
+        return;
+      }
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.name === 'ValidationError' || err.name === 'CastError') {
         next(new BadRequestError());
-        return;
-      }
-      if (err.name === 'CastError') {
-        next(new NotFoundError(MESSAGE_404));
         return;
       }
       next(err);

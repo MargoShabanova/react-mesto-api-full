@@ -6,7 +6,7 @@ const NotFoundError = require('../errors/not-found-err');
 const MESSAGE_404 = 'Карточка не найдена.';
 
 const getCards = (req, res, next) => {
-  Card.find({})
+  Card.find({}).sort({ cratedAt: -1 })
     .then((cards) => {
       res.send(cards);
     })
